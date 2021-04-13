@@ -15,6 +15,10 @@
 
 
         <header class="layout__header">
+            <div class="" style="background-color: var(--color-red);
+            color: var(--colors-white);
+            padding: 1rem;
+            text-align: center;">DEVELOPMENT SITE - NOT FOR GENERAL USE</div>
 
             <div class="nav-bar">
                 <a class="nav-bar__home-button" href="/">
@@ -54,8 +58,20 @@
 
 
                 <div class="sidebar-blog">
-                    <h2 class="sidebar-blog__heading">Guidance for publishers</h2>
+                    <h2 class="sidebar-blog__heading">
+                        Guidance for publishers
+                    </h2>
                     <ul class="sidebar-blog__content categories-list">
+                        {% if '/' == page.url %}
+                        <li class="categories-list__item category category--active">
+                            <a class="" href="{{ page.url }}#top">{{ page.title }}</a>
+                            {{ content | toc_only }}
+                        </li>
+                        {% else %}
+                        <li class="categories-list__item category">
+                            <a class="" href="/">Introduction</a>
+                        </li>
+                        {% endif %}
                         {% for guidance_page in site.guidance %}
                             {% if guidance_page.url == page.url %}
                             <li class="categories-list__item category category--active">
