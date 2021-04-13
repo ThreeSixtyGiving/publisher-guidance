@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Introduction
 
 ## Who is this guide for?
