@@ -1,7 +1,8 @@
 ---
 layout: default
+order: 10
 ---
-# Prepare
+# Plan
 
 ## Who is this guide for?
 

@@ -1,8 +1,9 @@
 ---
 layout: default
+order: 40
 ---
-# Publish
- 
+# Promote
+
 ## Who is this guide for?
 
 This guide is for anyone from a UK funding organisation who wants to publish their grants data openly in the 360Giving Data Standard. 
