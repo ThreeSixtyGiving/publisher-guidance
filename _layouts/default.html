@@ -8,11 +8,28 @@
     <title>{{ site.title }} | {{ page.title }}</title>
     <link rel="stylesheet" href="https://deploy-preview-28--festive-visvesvaraya-9f43a4.netlify.app/css/global.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .prose h1 > a,
+        .prose h2 > a,
+        .prose h3 > a,
+        .prose h4 > a,
+        .prose h5 > a,
+        .prose h6 > a {
+            display: none;
+        }
+        .prose h1:hover > a,
+        .prose h2:hover > a,
+        .prose h3:hover > a,
+        .prose h4:hover > a,
+        .prose h5:hover > a,
+        .prose h6:hover > a {
+            display: inline;
+        }
+    </style>
 </head>
 
 <body>
     <div class="layout layout--docs">
-
 
         <header class="layout__header">
             <div class="" style="background-color: var(--color-red);
@@ -20,183 +37,41 @@
             padding: 1rem;
             text-align: center;">DEVELOPMENT SITE - NOT FOR GENERAL USE</div>
 
-            <div class="nav-bar">
-                <a class="nav-bar__home-button" href="{% link index.md %}">
-                    <img src="https://cdn.threesixtygiving.org/components/preview/assets/images/360-logos/main/360giving-logo.svg" style="height: 84px;" />
-                    <span class="screen-reader-only">Home</span>
-                </a>
-
-                <nav class="nav-bar__nav-menu">
-                    <ul>
-
-                        <li class="nav-menu__item">
-
-                            <a class="nav-menu__button" href="{% link about.md %}">
-                                About
-                            </a>
-                        </li>
-
-                        <li class="nav-menu__item">
-
-                            <a class="nav-menu__button" href="https://threesixtygiving.org/">
-                                About 360Giving
-
-
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-
-
+            {% include navbar.html %}
         </header>
 
         <div class="layout__body">
-
             <aside class="layout__sidebar">
-
-
-                <div class="sidebar-blog">
-                    <h2 class="sidebar-blog__heading">
-                        Guidance for publishers
-                    </h2>
-                    <ul class="sidebar-blog__content categories-list">
-                        {% if '/' == page.url %}
-                        <li class="categories-list__item category category--active">
-                            <a class="" href="{{ page.url | absolute_url }}#top">{{ page.title }}</a>
-                            {{ content | toc_only }}
-                        </li>
-                        {% else %}
-                        <li class="categories-list__item category">
-                            <a class="" href="{{ '/' | absolute_url }}">Introduction</a>
-                        </li>
-                        {% endif %}
-                        {% for guidance_page in site.guidance %}
-                            {% if guidance_page.url == page.url %}
-                            <li class="categories-list__item category category--active">
-                                <a class="" href="{{ guidance_page.url | absolute_url }}#top">{{ guidance_page.title }}</a>
-                                {{ content | toc_only }}
-                            </li>
-                            {% else %}
-                            <li class="categories-list__item category">
-                                <a class="" href="{{ guidance_page.url | absolute_url }}">{{ guidance_page.title }}</a>
-                            </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-
+                {% include sidebar.html %}
             </aside>
             <div class="layout__content">
-
-
                 <main class="layout__content-inner">
-
-                    <div class="">
-                        <div class="prose prose--left">
-                            <section class="prose__section">
-                                <span id="top"></span>
-                                {{ content }}
-                            </section>
-                        </div>
-
+                    <div class="prose prose--left">
+                        <section class="prose__section">
+                            <span id="top"></span>
+                            {{ content }}
+                        </section>
+                    </div>
                 </main>
                 <footer class="layout__footer">
-
-                    <div class="subscribe-section">
-                        <div class="subscribe-section__wrapper">
-                            <form action="#" class="subscribe-section__form">
-                                <label for="subscribe" class="screen-reader-only">Subscribe</label>
-                                <input type="email" id="subscribe" placeholder="Subscribe to our newsletter">
-                                <input type="submit" value="Send">
-                            </form>
-                        </div>
-                    </div>
-                    <footer class="footer">
-                        <div class="footer__row wrapper">
-                            <div class="footer__column-2 footer__branding">
-                                <div class="footer__logo"><img src="https://cdn.threesixtygiving.org/images/360-giving-logo-white.svg" alt="360Giving">
-                                </div>
-                                <p class="footer__tagline">Open data for more effective grantmaking</p>
-                            </div>
-                            <div class="footer__column-1 footer__social">
-                                <a href="#" class="github-icon"><img src="https://cdn.threesixtygiving.org/images/github-logo.svg"
-                                        alt="Check our Github"></a>
-                                <a href="#" class="twitter-icon"><img src="https://cdn.threesixtygiving.org/images/twitter-logo.svg"
-                                        alt="Follow us on Twitter"></a>
-                            </div>
-                        </div>
-
-                        <div class="footer__row wrapper">
-                            <div class="footer__column-2 footer__section medium-up">
-                                <h3 class="footer__heading">Products</h3>
-                                <ul>
-                                    <li><a href="#">GrantNav</a></li>
-                                    <li><a href="#">Insights</a></li>
-                                    <li><a href="#">Resources</a></li>
-                                    <li><a href="#">Cove</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="footer__column-2 footer__section medium-up">
-                                <h3 class="footer__heading">Other Products</h3>
-                                <ul>
-                                    <li><a href="#">Data Registry</a></li>
-                                    <li><a href="#">Data Standard</a></li>
-                                    <li><a href="#">Data Challenge</a></li>
-                                    <li><a href="#">Data Champions</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="footer__column-3 footer__section">
-                                <h3 class="footer__heading">360 Resources</h3>
-                                <p>Data in JSON format is ideal for direct use by developers building visualisations and
-                                    web apps. The JSON should conform to the 360Giving JSON Schemas. Anyone automating
-                                    the publication of their data from their internal databases or via</p>
-                            </div>
-
-                            <div class="footer__column-3 footer__section">
-                                <h3 class="footer__heading">360 Resources</h3>
-                                <p>Data in JSON format is ideal for direct use by developers building visualisations and
-                                    web apps. The JSON should conform to the 360Giving JSON Schemas. Anyone automating
-                                    the publication of their data from their internal databases or via</p>
-
-                            </div>
-                        </div>
-
-                        <div class="wrapper footer__small-print">
-                            <p>
-                                <strong>360 Giving</strong> (Trading as <strong>360Giving</strong>) is a registered
-                                charity <a
-                                    href="https://register-of-charities.charitycommission.gov.uk/charity-details/?regId=1164883&subId=0">1164883</a>
-                                and a registered company <a
-                                    href="https://beta.companieshouse.gov.uk/company/09668396">09668396</a>.
-                                <br>Registered address: 360Giving, c/o Esmée Fairbairn Foundation, Kings Place, 90 York
-                                Way, London N1 9AG.
-                            </p>
-                        </div>
-
-                        <div class="footer__row wrapper footer__small-print">
-
-                            <div class="footer__column-2">
-                                <p>© Copyright 2021 360Giving.<br>Licensed under a <a href="#" target="_blank">Creative
-                                        Commons Attribution 4.0 International License</a>.</p>
-                            </div>
-                            <div class="footer__column-2 footer__policy-links">
-                                <p><a href="#">Privacy Notice</a> | <a href="#">Terms & Conditions</a> | <a
-                                        href="#">Cookie Policy</a> | <a href="#">Take Down Policy</a> | <a
-                                        href="#">License</a></p>
-                            </div>
-                        </div>
-                    </footer>
-
+                    {% include footer.html %}
                 </footer>
             </div>
-
         </div>
 
     </div>
+
+    <script>
+        document.querySelectorAll(".prose h1[id], .prose h2[id], .prose h3[id], .prose h4[id], .prose h5[id], .prose h6[id]").forEach((el) => {
+            var link = document.createElement("a");
+            link.setAttribute('href', `#${el.id}`);
+            link.setAttribute('area-hidden', 'true');
+            link.setAttribute('tabindex', '-1');
+            link.style.marginLeft = '8px';
+            link.innerText = "#";
+            el.append(link);
+        });
+    </script>
 
 </body>
 
