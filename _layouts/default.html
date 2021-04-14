@@ -21,7 +21,7 @@
             text-align: center;">DEVELOPMENT SITE - NOT FOR GENERAL USE</div>
 
             <div class="nav-bar">
-                <a class="nav-bar__home-button" href="/">
+                <a class="nav-bar__home-button" href="{% link index.md %}">
                     <img src="https://cdn.threesixtygiving.org/components/preview/assets/images/360-logos/main/360giving-logo.svg" style="height: 84px;" />
                     <span class="screen-reader-only">Home</span>
                 </a>
@@ -64,23 +64,23 @@
                     <ul class="sidebar-blog__content categories-list">
                         {% if '/' == page.url %}
                         <li class="categories-list__item category category--active">
-                            <a class="" href="{{ page.url }}#top">{{ page.title }}</a>
+                            <a class="" href="{{ page.url | absolute_url }}#top">{{ page.title }}</a>
                             {{ content | toc_only }}
                         </li>
                         {% else %}
                         <li class="categories-list__item category">
-                            <a class="" href="/">Introduction</a>
+                            <a class="" href="{{ '/' | absolute_url }}">Introduction</a>
                         </li>
                         {% endif %}
                         {% for guidance_page in site.guidance %}
                             {% if guidance_page.url == page.url %}
                             <li class="categories-list__item category category--active">
-                                <a class="" href="{{ guidance_page.url }}#top">{{ guidance_page.title }}</a>
+                                <a class="" href="{{ guidance_page.url | absolute_url }}#top">{{ guidance_page.title }}</a>
                                 {{ content | toc_only }}
                             </li>
                             {% else %}
                             <li class="categories-list__item category">
-                                <a class="" href="{{ guidance_page.url }}">{{ guidance_page.title }}</a>
+                                <a class="" href="{{ guidance_page.url | absolute_url }}">{{ guidance_page.title }}</a>
                             </li>
                             {% endif %}
                         {% endfor %}

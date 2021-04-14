@@ -7,7 +7,7 @@ layout: default
 <ul>
     {% for guidance_page in site.guidance %}
     <li class="">
-        <a class="" href="{{ guidance_page.url }}">{{ guidance_page.title }}</a>
+        <a class="" href="{{ guidance_page.url | absolute_url }}">{{ guidance_page.title }}</a>
     </li>
     {% endfor %}
 </ul>
