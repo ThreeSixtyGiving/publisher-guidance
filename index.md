@@ -18,7 +18,10 @@ We want to help you achieve your goal of sharing open and comparable grants data
 
 Our pro-bono support helps funders navigate the steps to share their grants data using the 360Giving Data Standard. We provide guidance and direct support to help streamline the process as far as possible.
 
-At any point in this process please feel free to contact our free Helpdesk via <support@threesixtygiving.org> with any queries (large or small).
+<div class="box box--teal">
+<h3 class="box__heading">Getting help</h3>
+At any point in this process please feel free to contact our free Helpdesk via <a href="mailto:support@threesixtygiving.org">support@threesixtygiving.org</a> with any queries (large or small).
+</div>
 
 ## What’s in the guide?
 
